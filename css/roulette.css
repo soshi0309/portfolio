@@ -1,0 +1,27 @@
+@charset "utf=8";
+
+#box {
+    font-size: 50px;
+    text-align: center;
+    width: 300px;
+    margin: 20px auto;
+    border: solid 3px black;
+}
+
+body {
+    width: 50%;
+    margin: 100px auto;
+    text-align: center;
+}
+
+#start{
+    border: solid 2px black;
+}
+
+#stop{
+    border: solid 2px black;
+}
+
+#reset{
+    border: solid 2px black;
+}

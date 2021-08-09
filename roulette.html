@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/roulette.css">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <title>roulette</title>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+        let ID;
+        let data=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+        let rand=0;
+        function start_roulette(){
+            ID=setInterval(roulette,50);
+            $("#start").prop("disabled",true);　
+            $("#stop").prop("disabled",false);
+        }
+        function stop_roulette(){
+            clearInterval(ID);
+            $("#"+data[rand]).css("background-color","orange");
+            data.splice(rand,1);
+            $("#start").prop("disabled",false);
+            $("#stop").prop("disabled",true);
+            if(data.length===0){
+                $("#start").prop("disabled",true);
+            }
+        }
+        function reset_roulette(){
+            clearInterval(ID);
+            $("td").css("background-color","");
+            $("#start").prop("disabled",false);
+            $("#stop").prop("disabled",true);
+            data=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+        }
+        function roulette(){
+            $("#"+data[rand]).css("background-color","");
+            rand=Math.floor(Math.random()*data.length);
+            $("#"+data[rand]).css("background-color","red");
+        }
+        $(function(){
+            $("#start").click(start_roulette);
+            $("#stop").click(stop_roulette);
+            $("#reset").click(reset_roulette);
+        })
+    </script>
+</head>
+<body>
+    <div id="works" class="bg">
+        <nav>
+          <ul class="main-nav">
+            <li><a href="index.html">Home</a></li>
+           <li><a href="profile.html">Profile</a></li>
+           <li><a href="works.html">Works</a></li>
+           <li><a href="contact.html">Contact</a></li>
+         </ul>
+       </nav>
+    <table id=box border="1">
+    <tr>
+        <td id="1">1</td>
+        <td id="2">2</td>
+        <td id="3">3</td>
+        <td id="4">4</td>
+    </tr>
+    <tr>
+        <td id="5">5</td>
+        <td id="6">6</td>
+        <td id="7">7</td>
+        <td id="8">8</td>
+    </tr>
+    <tr>
+        <td id="9">9</td>
+        <td id="10">10</td>
+        <td id="11">11</td>
+        <td id="12">12</td>
+    </tr>
+    <tr>
+        <td id="13">13</td>
+        <td id="14">14</td>
+        <td id="15">15</td>
+        <td id="16">16</td>
+    </tr>
+    </table>
+    <button id ="start">スタート</button>
+    <button id ="stop">ストップ</button>
+    <button id ="reset">リセット</button>
+    <h3>制作ポイント</h3>
+         <p>簡単ではありますが、javascriptをつかってルーレットを作成いたしました。
+            <br>止まった色の変化や同じところには止まらないなど細かな動作を入れました。</br></p>
+         <h3>制作時間</h3>
+         <p>２週間</p>
+         </div>
+</body>
+</html>
